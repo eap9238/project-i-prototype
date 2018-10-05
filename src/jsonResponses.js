@@ -23,22 +23,22 @@ const getList = (request, response) => {
   // json object to send
   let i = 1;
   const j = Object.keys(characters);
-  //console.log(characters[j[i]]);
-  let responseList = '';
+  // console.log(characters[j[i]]);
+  let characterList = '';
 
   if (j.length > 0) {
-    responseList = characters[j[0]].name;
-    //console.log(characters[j[0]]);
+    characterList = characters[j[0]].name;
+    // console.log(characters[j[0]]);
 
     while (i < j.length) {
-      responseList = `${responseList}<br>${characters[j[i]].name}`;
+      characterList = `${characterList}` + <br> + `${characters[j[i]].name}`;
       i++;
     }
   }
 
-  //console.log(j);
+  // console.log(j);
   const responseJSON = {
-    responseList,
+    characterList,
   };
 
     // return 200 with message

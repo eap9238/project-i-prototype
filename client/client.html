@@ -21,9 +21,9 @@
                     content.appendChild(p);
                 }
                 
-                if(obj.characters){
+                if(obj.characterList){
                     const characterList = document.createElement('p');
-                    const characters = JSON.stringify(obj.characters);
+                    const characters = JSON.stringify(obj.characterList);
                     characterList.textContent = characters;
                     content.appendChild(characterList);
                 }
@@ -85,13 +85,16 @@
             }
             
             const sendGet = (e,getList) => {
+                console.dir(getList);
                 const action = getList.getAttribute('action');
                 const method = getList.getAttribute('method');
+                /*
                 const methodSelect = document.querySelector('#methodSelect');
                 const urlField = document.querySelector('#urlField');
+                */
                 const xhr = new XMLHttpRequest();
                 
-                xhr.open(methodSelect.value,urlField.value);
+                xhr.open("get","/getList");
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.onload = () => handleResponse(xhr);
@@ -106,8 +109,8 @@
                 const addForm = document.querySelector('#characterForm');
                 const getForm = document.querySelector('#toolForm');
                 
-                const addCharacter = (e) => {sendPost(e,addForm)};
-                const getList = (e) => {sendGet(e,getForm)};
+                const addCharacter = (e) => sendPost(e,addForm);
+                const getList = (e) => sendGet(e,getForm);
                 
                 addForm.addEventListener('submit',addCharacter);
                 getForm.addEventListener('submit',getList);
@@ -120,7 +123,7 @@
     
     <body>
         <section id="top">
-            <h3>POST Status Code Tests</h3>
+            <h3>Dnd 5e Character Sheet Calculator</h3>
             <form id="characterForm" action="/addCharacter" method="post">
                 <input type="submit" value="Save"/>
                 
@@ -134,7 +137,7 @@
                 <br>
                 
                 <label for="class">Class: </label>
-                <select id="classSelect">
+                <select id="classField">
                     <option value="barbarian">Barbarian</option>
                     <option value="bard">Bard</option>
                     <option value="cleric">Cleric</option>
@@ -148,7 +151,7 @@
                     <option value="wizard">Wizard</option>
                 </select>
                 <label for="class">Race: </label>
-                <select id="classSelect">
+                <select id="raceField">
                     <option value="dragonborn">Dragonborn</option>
                     <option value="dwarf">Dwarf</option>
                     <option value="elf">Elf</option>

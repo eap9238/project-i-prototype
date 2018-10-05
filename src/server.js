@@ -6,7 +6,6 @@ const jsonHandler = require('./jsonResponses.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-
 // function to handle posts
 const handlePost = (request, response, parsedUrl) => {
   if (parsedUrl.pathname !== '/addCharacter') return;
@@ -41,6 +40,9 @@ const handleGet = (request, response, parsedUrl) => {
       break;
     case '/getList':
       jsonHandler.getList(request, response, 200);
+      break;
+    case '/getCharacter':
+      jsonHandler.getCharacter(request, response, 200);
       break;
     case '/':
     case '/client.html':
