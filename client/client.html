@@ -21,11 +21,11 @@
                     content.appendChild(p);
                 }
                 
-                if(obj.users){
-                    const userList = document.createElement('p');
-                    const users = JSON.stringify(obj.users);
-                    userList.textContent = users;
-                    content.appendChild(userList);
+                if(obj.characters){
+                    const characterList = document.createElement('p');
+                    const characters = JSON.stringify(obj.characters);
+                    characterList.textContent = characters;
+                    content.appendChild(characterList);
                 }
                 }
             }
@@ -57,27 +57,36 @@
                 parseJSON(xhr, content);
             };
 
-            const sendPost = (e,addUser) => {
-                const action = addUser.getAttribute('action');
-                const method = addUser.getAttribute('method');
-                const name = addUser.querySelector('#nameField');
-                const age = addUser.querySelector('#ageField');
+            const sendPost = (e,addCharacter) => {
+                const action = addCharacter.getAttribute('action');
+                const method = addCharacter.getAttribute('method');
+                const name = addCharacter.querySelector('#nameField');
+                const level = addCharacter.querySelector('#levelField');
+                const race = addCharacter.querySelector('#raceField');
+                const cla_ss = addCharacter.querySelector('#classField');
+                const strength = addCharacter.querySelector('#strengthField');
+                const constitution = addCharacter.querySelector('#constitutionField');
+                const dexterity = addCharacter.querySelector('#dexterityField');
+                const intelligence = addCharacter.querySelector('#intelligenceField');
+                const wisdom = addCharacter.querySelector('#wisdomField');
+                const charisma = addCharacter.querySelector('#charismaField');
                 
                 const xhr = new XMLHttpRequest();
                 xhr.open(method,action);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.onload = () => handleResponse(xhr);
-                const formData = `name=${name.value}&age=${age.value}`;
+                
+                const formData = `name=${name.value}&level=${level.value}&class=${cla_ss.value}&race=${race.value}&strength=${strength.value}&constitution=${constitution.value}&dexterity=${dexterity.value}&wisdom=${wisdom.value}&intelligence=${intelligence.value}&charisma=${charisma.value}`;                
                 xhr.send(formData);
                 
                 e.preventDefault();
                 return false;
             }
             
-            const sendGet = (e,getUsers) => {
-                const action = getUsers.getAttribute('action');
-                const method = getUsers.getAttribute('method');
+            const sendGet = (e,getList) => {
+                const action = getList.getAttribute('action');
+                const method = getList.getAttribute('method');
                 const methodSelect = document.querySelector('#methodSelect');
                 const urlField = document.querySelector('#urlField');
                 const xhr = new XMLHttpRequest();
@@ -94,14 +103,14 @@
             }
             
             const init = () => {
-                const addForm = document.querySelector('#nameForm');
-                const getForm = document.querySelector('#userForm');
+                const addForm = document.querySelector('#characterForm');
+                const getForm = document.querySelector('#toolForm');
                 
-                const addUser = (e) => {sendPost(e,addForm)};
-                const getUsers = (e) => {sendGet(e,getForm)};
+                const addCharacter = (e) => {sendPost(e,addForm)};
+                const getList = (e) => {sendGet(e,getForm)};
                 
-                addForm.addEventListener('submit',addUser);
-                getForm.addEventListener('submit',getUsers);
+                addForm.addEventListener('submit',addCharacter);
+                getForm.addEventListener('submit',getList);
             }
             
             window.onload = init;
@@ -112,7 +121,7 @@
     <body>
         <section id="top">
             <h3>POST Status Code Tests</h3>
-            <form id="nameForm" action="/addCharacter" method="post">
+            <form id="characterForm" action="/addCharacter" method="post">
                 <input type="submit" value="Save"/>
                 
                 <br>
@@ -174,7 +183,7 @@
                 
             <br><br>
             
-            <form id="userForm" action="/getList" method="get">
+            <form id="toolForm" action="/getList" method="get">
                 <!--
                 <select id='urlField'>
                     <option value='/getUsers'>/getUsers</option>
@@ -187,6 +196,7 @@
                 </select>
                 -->
                 <input type="submit" value="Get List" />
+                <p id="characterSelect"></p>
             </form>
         </section>
         

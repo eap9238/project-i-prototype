@@ -16,9 +16,38 @@ const notFound = (request, response) => {
 
   return respondJSON(request, response, 404, responseJSON);
 };
-// get user object
+
+// get character list
 // should calculate a 200
 const getList = (request, response) => {
+  // json object to send
+  let i = 1;
+  const j = Object.keys(characters);
+  //console.log(characters[j[i]]);
+  let responseList = '';
+
+  if (j.length > 0) {
+    responseList = characters[j[0]].name;
+    //console.log(characters[j[0]]);
+
+    while (i < j.length) {
+      responseList = `${responseList}<br>${characters[j[i]].name}`;
+      i++;
+    }
+  }
+
+  //console.log(j);
+  const responseJSON = {
+    responseList,
+  };
+
+    // return 200 with message
+  return respondJSON(request, response, 200, responseJSON);
+};
+
+// get character object
+// should calculate a 200
+const getCharacter = (request, response) => {
   // json object to send
   const responseJSON = {
     characters,
@@ -32,13 +61,15 @@ const getList = (request, response) => {
 const addCharacter = (request, response, body) => {
   const responseJSON = { message: 'Name and age are both required.' };
 
-  if (!body.name || !body.level || !body.strength || !body.constitution || !body.dexterity || !body.wisdom || !body.intelligence || !body.charisma) {
-    responseJSON.id = 'missingParams';
-    return respondJSON(request, response, 400, responseJSON);
+  if (!body.name || !body.level || !body.strength || !body.constitution) {
+    if (!body.dexterity || !body.wisdom || !body.intelligence || !body.charisma) {
+      responseJSON.id = 'missingParams';
+      return respondJSON(request, response, 400, responseJSON);
+    }
   }
 
   if (!characters[body.name]) {
-    //console.dir('making account');
+    // console.dir('making account');
     const status = 201;
 
     characters[body.name] = {
@@ -51,13 +82,13 @@ const addCharacter = (request, response, body) => {
       dexterity: body.dexterity,
       wisdom: body.wisdom,
       intelligence: body.intelligence,
-      charisma: body.charisma
+      charisma: body.charisma,
     };
 
     responseJSON.message = 'Created Successfully';
     return respondJSON(request, response, status, responseJSON);
   }
-  //console.dir('updating account');
+  // console.dir('updating account');
   const status = 204;
   characters[body.name].age = body.age;
 
@@ -69,6 +100,7 @@ const addCharacter = (request, response, body) => {
 // set public modules
 module.exports = {
   addCharacter,
+  getCharacter,
   getList,
   notFound,
 };
