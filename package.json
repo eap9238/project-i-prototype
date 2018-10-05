@@ -1,7 +1,7 @@
 {
     "name": "project-i-prototype ",
     "version": "1.0.0",
-    "description": "Project prototype for project i, a dnd character maker",
+    "description": "project prototype for project i, a dnd character maker",
     "main": "./src/server.js",
     "scripts": {
         "start": "node ./src/server.js",
