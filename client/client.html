@@ -112,15 +112,70 @@
     <body>
         <section id="top">
             <h3>POST Status Code Tests</h3>
-            <form id="nameForm" action="/addUser" method="post">
+            <form id="nameForm" action="/addCharacter" method="post">
+                <input type="submit" value="Save"/>
+                
+                <br>
+                
                 <label for="name">Name: </label>
-                <input id="nameField" type="text" name="name" />
-                <label for="age">Age: </label>
-                <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-                <input type="submit" value="Add User" />
+                <input id="nameField" type="text" name="name" value="Name"/>
+                <label for="level">Level: </label>
+                <input id="levelField" type="number" name="level" min="1" max="20" step="1" value="1"/>
+                
+                <br>
+                
+                <label for="class">Class: </label>
+                <select id="classSelect">
+                    <option value="barbarian">Barbarian</option>
+                    <option value="bard">Bard</option>
+                    <option value="cleric">Cleric</option>
+                    <option value="fighter">Fighter</option>
+                    <option value="druid">Druid</option>
+                    <option value="monk">Monk</option>
+                    <option value="ranger">Ranger</option>
+                    <option value="rogue">Rouge</option>
+                    <option value="sorcerer">Sorcerer</option>
+                    <option value="warlock">Warlock</option>
+                    <option value="wizard">Wizard</option>
+                </select>
+                <label for="class">Race: </label>
+                <select id="classSelect">
+                    <option value="dragonborn">Dragonborn</option>
+                    <option value="dwarf">Dwarf</option>
+                    <option value="elf">Elf</option>
+                    <option value="gnome">Gnome</option>
+                    <option value="half-elf">Half-Elf</option>
+                    <option value="half-orc">Half-Orc</option>
+                    <option value="halfling">Halfling</option>
+                    <option value="human">Human</option>
+                    <option value="tiefling">Tiefling</option>
+                </select>
+                
+                <br><br>
+                
+                <label for="strength">Strength: </label>
+                <input id="strengthField" type="number" name="strength" min="1" max="20" step="1" value="10"/>
+                <br>
+                <label for="constitution">Constitution: </label>
+                <input id="constitutionField" type="number" name="constitution" min="1" max="20" step="1" value="10"/>
+                <br>
+                <label for="dexterity">Dexterity: </label>
+                <input id="dexterityField" type="number" name="dexterity" min="1" max="20" step="1" value="10"/>
+                <br>
+                <label for="wisdom">Wisdom: </label>
+                <input id="wisdomField" type="number" name="wisdom" min="1" max="20" step="1" value="10"/>
+                <br>
+                <label for="intelligence">Intelligence: </label>
+                <input id="intelligenceField" type="number" name="intelligence" min="1" max="20" step="1" value="10"/>
+                <br>
+                <label for="charisma">Charisma: </label>
+                <input id="charismaField" type="number" name="charisma" min="1" max="20" step="1" value="10"/>
             </form>
+                
+            <br><br>
             
-            <form id="userForm" action="/getUsers" method="get">
+            <form id="userForm" action="/getList" method="get">
+                <!--
                 <select id='urlField'>
                     <option value='/getUsers'>/getUsers</option>
                     <option value='/notReal'>/notReal</option>
@@ -130,7 +185,8 @@
                     <option value="get">GET</option>
                     <option value="head">HEAD</option>
                 </select>
-                <input type="submit" value="Get User" />
+                -->
+                <input type="submit" value="Get List" />
             </form>
         </section>
         

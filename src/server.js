@@ -9,7 +9,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // function to handle posts
 const handlePost = (request, response, parsedUrl) => {
-  if (parsedUrl.pathname !== '/addUser') return;
+  if (parsedUrl.pathname !== '/addCharacter') return;
 
   const res = response;
   const body = [];
@@ -29,7 +29,7 @@ const handlePost = (request, response, parsedUrl) => {
     const bodyString = Buffer.concat(body).toString();
     const bodyParams = query.parse(bodyString);
 
-    jsonHandler.addUser(request, res, bodyParams);
+    jsonHandler.addCharacter(request, res, bodyParams);
   });
 };
 
@@ -39,11 +39,8 @@ const handleGet = (request, response, parsedUrl) => {
     case '/style.css':
       htmlHandler.getCSS(request, response);
       break;
-    case '/getUsers':
-      jsonHandler.getUsers(request, response, 200);
-      break;
-    case '/getUsersMeta':
-      jsonHandler.getUsersMeta(request, response);
+    case '/getList':
+      jsonHandler.getList(request, response, 200);
       break;
     case '/':
     case '/client.html':
@@ -55,27 +52,12 @@ const handleGet = (request, response, parsedUrl) => {
   }
 };
 
-// function to handle meta requests
-const handleHead = (request, response, parsedUrl) => {
-  switch (parsedUrl.pathname) {
-    case '/getUsers':
-      jsonHandler.getUsersMeta(request, response);
-      break;
-    default:
-      jsonHandler.notFoundMeta(request, response);
-      break;
-  }
-};
-
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
 
   switch (request.method) {
     case 'GET':
       handleGet(request, response, parsedUrl);
-      break;
-    case 'HEAD':
-      handleHead(request, response, parsedUrl);
       break;
     case 'POST':
       handlePost(request, response, parsedUrl);

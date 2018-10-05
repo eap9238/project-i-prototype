@@ -1,7 +1,7 @@
 {
-    "name": "http-api-assignment-ii",
+    "name": "project-i-prototype ",
     "version": "1.0.0",
-    "description": "second iteration of the API assignment",
+    "description": "Project prototype for project i, a dnd character maker",
     "main": "./src/server.js",
     "scripts": {
         "start": "node ./src/server.js",
@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/eap9238/http-api-assignment-ii.git"
+        "url": "git+https://github.com/eap9238/project-i-prototype.git"
     },
     "author": "Eleanor Post eap9238@g.rit.edu",
     "license": "ISC",
@@ -20,7 +20,7 @@
         "eslint-plugin-import": "^2.7.0"
     },
     "bugs": {
-        "url": "https://github.com/eap9238/http-api-assignment-ii/issues"
+        "url": "https://github.com/eap9238/project-i-prototype/issues"
     },
-    "homepage": "https://github.com/eap9238/http-api-assignment-ii#readme"
+    "homepage": "https://github.com/eap9238/project-i-prototype/blob/master/README.md"
 }
