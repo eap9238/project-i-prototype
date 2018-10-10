@@ -21,19 +21,27 @@ const notFound = (request, response) => {
 // should calculate a 200
 const getList = (request, response) => {
   // json object to send
-  let i = 1;
+  let i = 0;
   const j = Object.keys(characters);
   // console.log(characters[j[i]]);
-  let characterList = '';
+  var characterList = [];
 
   if (j.length > 0) {
-    characterList = characters[j[0]].name;
+    //characterList[0] = characters[j[0]].name;
     // console.log(characters[j[0]]);
-
+      
     while (i < j.length) {
-      characterList = `${characterList}` + <br> + `${characters[j[i]].name}`;
+      characterList[i] = characters[j[i]].name;
       i++;
     }
+      
+    /*
+    while (i < j.length) {
+      characterList = `${characterList}` + '<br>' + `${characters[j[i]].name}`;
+      i++;
+    }
+    */
+    
   }
 
   // console.log(j);
@@ -47,10 +55,15 @@ const getList = (request, response) => {
 
 // get character object
 // should calculate a 200
-const getCharacter = (request, response) => {
+const getCharacter = (request, response, name) => {
   // json object to send
+  console.log(name);
+  console.log(characters[name]);
+
+  const character = characters[name];
+
   const responseJSON = {
-    characters,
+    character,
   };
 
     // return 200 with message

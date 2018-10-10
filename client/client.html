@@ -21,7 +21,19 @@
                     content.appendChild(p);
                 }
                 
-                if(obj.characterList){
+                if(obj.characterList) {                    
+                    const j = Object.keys(obj.characterList)
+                    var i = 0;
+                    
+                    while (i < j.length) {
+                            const character = document.createElement("BUTTON");
+                            character.textContent = obj.characterList[j[i]];
+                        
+                            character.addEventListener('click',getCharacter);
+                            content.appendChild(character);
+                            i++;
+                        }
+                    
                     const characterList = document.createElement('p');
                     const characters = JSON.stringify(obj.characterList);
                     characterList.textContent = characters;
@@ -111,9 +123,11 @@
                 
                 const addCharacter = (e) => sendPost(e,addForm);
                 const getList = (e) => sendGet(e,getForm);
+                const getCharacter = (e) => sendGet(e,getForm);
                 
                 addForm.addEventListener('submit',addCharacter);
                 getForm.addEventListener('submit',getList);
+                //getForm.addEventListener('submit',getCharacter);
             }
             
             window.onload = init;
@@ -204,6 +218,8 @@
         </section>
         
         <section id="content">
+            <section id="list">
+            </section>
         </section>
     </body>
 </html>
