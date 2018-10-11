@@ -10,37 +10,55 @@
             const parseJSON = (xhr, content) => {
                 //console.dir(xhr);
                 if (xhr.response != "") {
-                    //console.dir(xhr.response);
-                
-                const obj = JSON.parse(xhr.response);
-                console.dir(obj);
-                
-                if(obj.message){
-                    const p = document.createElement('p');
-                    p.textContent = `Message: ${obj.message}`;
-                    content.appendChild(p);
-                }
-                
-                if(obj.characterList) {                    
-                    const j = Object.keys(obj.characterList)
-                    var i = 0;
-                    
-                    while (i < j.length) {
+                        //console.dir(xhr.response);
+
+                    const obj = JSON.parse(xhr.response);
+                    //console.dir(obj);
+
+                    if(obj.message){
+                        const p = document.createElement('p');
+                        p.textContent = `Message: ${obj.message}`;
+                        content.appendChild(p);
+                    }
+
+                    if(obj.characterList) {
+                        var i = 0;
+
+                        while (i < obj.characterList.length) {
+                            //action="/getList" method="get"
                             const character = document.createElement("BUTTON");
-                            character.textContent = obj.characterList[j[i]];
-                        
-                            character.addEventListener('click',getCharacter);
+                            character.textContent = obj.characterList[i];
+                            character.setAttribute("action", "/getCharacter");
+                            character.setAttribute("method", "get");
+                            character.setAttribute("value", character.textContent);
+                            
+                            //console.log(obj.characterList[i]);
+                            
                             content.appendChild(character);
+
+                            const getCharacter = (e) => sendGet(e,character);
+                            character.addEventListener('click',getCharacter);
                             i++;
                         }
-                    
-                    const characterList = document.createElement('p');
-                    const characters = JSON.stringify(obj.characterList);
-                    characterList.textContent = characters;
-                    content.appendChild(characterList);
-                }
+
+                        /*
+                        const characterList = document.createElement('p');
+                        const characters = JSON.stringify(obj.characterList);
+                        characterList.textContent = characters;
+                        content.appendChild(characterList);
+                        */
+                    }
+
+                    if(obj.character) {
+                        const characterList = document.createElement('p');
+                        const characters = JSON.stringify(obj.character);
+                        characterList.textContent = characters;
+                        content.appendChild(characterList);
+                    }
                 }
             }
+            
+            
 
             const handleResponse = (xhr, parseResponse) => {
                 const content = document.querySelector('#content');
@@ -97,22 +115,42 @@
             }
             
             const sendGet = (e,getList) => {
-                console.dir(getList);
+                //console.dir(getList);
                 const action = getList.getAttribute('action');
-                const method = getList.getAttribute('method');
-                /*
-                const methodSelect = document.querySelector('#methodSelect');
-                const urlField = document.querySelector('#urlField');
-                */
-                const xhr = new XMLHttpRequest();
+                var method = getList.getAttribute('method');
+                const value = getList.getAttribute('value');
                 
-                xhr.open("get","/getList");
+                const xhr = new XMLHttpRequest();
+                xhr.open(method,action);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.onload = () => handleResponse(xhr);
+                      
+                //console.log(value);
+                //console.log(value.length);
                 
-                //console.dir(xhr);
-                xhr.send();
+                if (value.length > 0) {
+                    const formData = `name=${value}`;
+                    
+                    /*
+                    console.dir('formData:');
+                    console.dir(formData);
+                    
+                    console.dir('HasLength');
+                    console.dir(xhr);
+                    */
+                    
+                    xhr.send(formData);
+                } else {
+                    
+                    /*
+                    console.dir('NoLength');
+                    console.dir(xhr);
+                    */
+                    
+                    xhr.send();
+                }
+                
                 e.preventDefault();
                 return false;
             }
@@ -123,7 +161,7 @@
                 
                 const addCharacter = (e) => sendPost(e,addForm);
                 const getList = (e) => sendGet(e,getForm);
-                const getCharacter = (e) => sendGet(e,getForm);
+                //const getCharacter = (e) => sendGet(e,getForm);
                 
                 addForm.addEventListener('submit',addCharacter);
                 getForm.addEventListener('submit',getList);
@@ -200,7 +238,7 @@
                 
             <br><br>
             
-            <form id="toolForm" action="/getList" method="get">
+            <form id="toolForm" action="/getList" method="get" value=''>
                 <!--
                 <select id='urlField'>
                     <option value='/getUsers'>/getUsers</option>
@@ -218,8 +256,6 @@
         </section>
         
         <section id="content">
-            <section id="list">
-            </section>
         </section>
     </body>
 </html>

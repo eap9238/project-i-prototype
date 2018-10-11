@@ -33,7 +33,7 @@ const handlePost = (request, response, parsedUrl) => {
 };
 
 // function to handle requests
-const handleGet = (request, response, parsedUrl) => {
+const handleGet = (request, response, parsedUrl) => {    
   switch (parsedUrl.pathname) {
     case '/style.css':
       htmlHandler.getCSS(request, response);
@@ -41,33 +41,44 @@ const handleGet = (request, response, parsedUrl) => {
     case '/getList':
       jsonHandler.getList(request, response, 200);
       break;
-    case '/getCharacter':
-      if (parsedUrl.pathname !== '/getCharacter') break;
-
-      const res = response;
-      const body = [];
-
-      // if error, present error and send 400 error
-      request.on('error', (e) => {
-        console.dir(e);
-        res.statusCode = 400;
-        res.end();
-      });
-
-      request.on('data', (data) => {
-        body.push(data);
-      });
-
-      request.on('end', () => {
-        const bodyString = Buffer.concat(body).toString();
-        const bodyParams = query.parse(bodyString);
-
-        jsonHandler.getCharacter(request, response, bodyParams.name);
-      });
-      break;
     case '/':
     case '/client.html':
       htmlHandler.getIndex(request, response);
+      break;
+    case '/getCharacter':
+        const res = response;
+        const body = [];
+
+        // if error, present error and send 400 error
+        request.on('error', (e) => {
+        console.dir(e);
+        res.statusCode = 400;
+        res.end();
+        });
+
+        request.on('data', (data) => {
+            console.dir('data:');
+            console.dir(data);
+            console.dir('endData');
+            body.push(data);
+        });
+
+        request.on('end', () => {
+            const bodyString = Buffer.concat(body).toString();
+            const bodyParams = query.parse(bodyString);
+
+            console.log('bodyString:');
+            console.log(bodyString);
+            console.log(bodyString.name);
+            console.dir('endBString');
+
+            console.log('BodyParams:');
+            console.log(bodyParams);
+            console.log(bodyParams.name);
+            console.dir('endBParams');
+
+            jsonHandler.getCharacter(request, response, bodyParams);
+        });
       break;
     default:
       jsonHandler.notFound(request, response, 404);
@@ -77,7 +88,6 @@ const handleGet = (request, response, parsedUrl) => {
 
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
-
   switch (request.method) {
     case 'GET':
       handleGet(request, response, parsedUrl);
