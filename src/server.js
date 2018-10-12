@@ -33,8 +33,10 @@ const handlePost = (request, response, parsedUrl) => {
 };
 
 // function to handle requests
-const handleGet = (request, response, parsedUrl) => {    
-  switch (parsedUrl.pathname) {
+const handleGet = (request, response, parsedUrl) => {
+    console.log(parsedUrl);
+    
+    switch (parsedUrl.pathname) {
     case '/style.css':
       htmlHandler.getCSS(request, response);
       break;
@@ -45,40 +47,15 @@ const handleGet = (request, response, parsedUrl) => {
     case '/client.html':
       htmlHandler.getIndex(request, response);
       break;
-    case '/getCharacter':
-        const res = response;
-        const body = [];
+      case '/getCharacter':
+        //parse the url using the url module
+        //This will let us grab any section of the URL by name
+      const parsedUrl = url.parse(request.url);
 
-        // if error, present error and send 400 error
-        request.on('error', (e) => {
-        console.dir(e);
-        res.statusCode = 400;
-        res.end();
-        });
-
-        request.on('data', (data) => {
-            console.dir('data:');
-            console.dir(data);
-            console.dir('endData');
-            body.push(data);
-        });
-
-        request.on('end', () => {
-            const bodyString = Buffer.concat(body).toString();
-            const bodyParams = query.parse(bodyString);
-
-            console.log('bodyString:');
-            console.log(bodyString);
-            console.log(bodyString.name);
-            console.dir('endBString');
-
-            console.log('BodyParams:');
-            console.log(bodyParams);
-            console.log(bodyParams.name);
-            console.dir('endBParams');
-
-            jsonHandler.getCharacter(request, response, bodyParams);
-        });
+        //grab the query parameters (?key=value&key2=value2&etc=etc)
+        //and parse them into a reusable object by field name
+      const params = query.parse(parsedUrl.query);
+      jsonHandler.getCharacter(request, response, params);
       break;
     default:
       jsonHandler.notFound(request, response, 404);

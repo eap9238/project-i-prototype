@@ -40,20 +40,19 @@
                             character.addEventListener('click',getCharacter);
                             i++;
                         }
-
-                        /*
-                        const characterList = document.createElement('p');
-                        const characters = JSON.stringify(obj.characterList);
-                        characterList.textContent = characters;
-                        content.appendChild(characterList);
-                        */
                     }
 
                     if(obj.character) {
-                        const characterList = document.createElement('p');
-                        const characters = JSON.stringify(obj.character);
-                        characterList.textContent = characters;
-                        content.appendChild(characterList);
+                        document.querySelector('#nameField').value = obj.character.name;
+                        document.querySelector('#levelField').value = obj.character.level;
+                        document.querySelector('#raceField').value = obj.character.race;
+                        document.querySelector('#classField').value = obj.character.class;
+                        document.querySelector('#strengthField').value = obj.character.strength;
+                        document.querySelector('#constitutionField').value = obj.character.constitution;
+                        document.querySelector('#dexterityField').value = obj.character.dexterity;
+                        document.querySelector('#intelligenceField').value = obj.character.intelligence;
+                        document.querySelector('#wisdomField').value = obj.character.wisdom;
+                        document.querySelector('#charismaField').value = obj.character.charisma;
                     }
                 }
             }
@@ -116,41 +115,26 @@
             
             const sendGet = (e,getList) => {
                 //console.dir(getList);
-                const action = getList.getAttribute('action');
+                var action = getList.getAttribute('action');
                 var method = getList.getAttribute('method');
                 const value = getList.getAttribute('value');
+                      
+                //console.log(value);
+                //console.log(value.length);
+                
+                if (value.length > 0) {
+                    console.dir(value);
+                    action = `${action}?` + `name=${value}`;
+                    console.dir(action);
+                } 
                 
                 const xhr = new XMLHttpRequest();
                 xhr.open(method,action);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.onload = () => handleResponse(xhr);
-                      
-                //console.log(value);
-                //console.log(value.length);
-                
-                if (value.length > 0) {
-                    const formData = `name=${value}`;
-                    
-                    /*
-                    console.dir('formData:');
-                    console.dir(formData);
-                    
-                    console.dir('HasLength');
-                    console.dir(xhr);
-                    */
-                    
-                    xhr.send(formData);
-                } else {
-                    
-                    /*
-                    console.dir('NoLength');
-                    console.dir(xhr);
-                    */
-                    
-                    xhr.send();
-                }
-                
+                  
+                xhr.send();
                 e.preventDefault();
                 return false;
             }
