@@ -53,16 +53,24 @@
                     }
 
                     if(obj.character) {
+                        event = new Event('change');
+                        
                         document.querySelector('#nameField').value = obj.character.name;
                         document.querySelector('#levelField').value = obj.character.level;
                         document.querySelector('#raceField').value = obj.character.race;
                         document.querySelector('#classField').value = obj.character.class;
                         document.querySelector('#strengthField').value = obj.character.strength;
+                        document.querySelector('#strengthField').dispatchEvent(event);
                         document.querySelector('#constitutionField').value = obj.character.constitution;
+                        document.querySelector('#constitutionField').dispatchEvent(event);
                         document.querySelector('#dexterityField').value = obj.character.dexterity;
+                        document.querySelector('#dexterityField').dispatchEvent(event);
                         document.querySelector('#intelligenceField').value = obj.character.intelligence;
+                        document.querySelector('#intelligenceField').dispatchEvent(event);
                         document.querySelector('#wisdomField').value = obj.character.wisdom;
+                        document.querySelector('#wisdomField').dispatchEvent(event);
                         document.querySelector('#charismaField').value = obj.character.charisma;
+                        document.querySelector('#charismaField').dispatchEvent(event);
                     }
                 }
             }
@@ -160,6 +168,90 @@
                 addForm.addEventListener('submit',addCharacter);
                 getForm.addEventListener('submit',getList);
                 //getForm.addEventListener('submit',getCharacter);
+                
+                document.querySelector('#strengthField').addEventListener('change', function () {
+                    var num = document.querySelector('#strengthField').value;
+                
+                    num -= 10;
+
+                    num /= 2;
+
+                    num = Math.floor(num);
+
+                    //console.log(document.querySelector('#strengthField').value + ", " + num + ", " + "#strengthFieldMod");
+
+                    document.querySelector('#strengthFieldMod').value = num;
+                } );
+                                                                          
+                document.querySelector('#dexterityField').addEventListener('change', function () {
+                    var num = document.querySelector('#dexterityField').value;
+                
+                    num -= 10;
+
+                    num /= 2;
+
+                    num = Math.floor(num);
+
+                    //console.log(document.querySelector('#strengthField').value + ", " + num + ", " + "#strengthFieldMod");
+
+                    document.querySelector('#dexterityFieldMod').value = num;
+                } );
+                                                                           
+                document.querySelector('#constitutionField').addEventListener('change', function () {
+                    var num = document.querySelector('#constitutionField').value;
+                
+                    num -= 10;
+
+                    num /= 2;
+
+                    num = Math.floor(num);
+
+                    //console.log(document.querySelector('#strengthField').value + ", " + num + ", " + "#strengthFieldMod");
+
+                    document.querySelector('#constitutionFieldMod').value = num;
+                } );
+                                                                              
+                document.querySelector('#intelligenceField').addEventListener('change', function () {
+                    var num = document.querySelector('#intelligenceField').value;
+                
+                    num -= 10;
+
+                    num /= 2;
+
+                    num = Math.floor(num);
+
+                    //console.log(document.querySelector('#strengthField').value + ", " + num + ", " + "#strengthFieldMod");
+
+                    document.querySelector('#intelligenceFieldMod').value = num;
+                } );
+                                                                              
+                document.querySelector('#wisdomField').addEventListener('change', function () {
+                    var num = document.querySelector('#wisdomField').value;
+                
+                    num -= 10;
+
+                    num /= 2;
+
+                    num = Math.floor(num);
+
+                    //console.log(document.querySelector('#strengthField').value + ", " + num + ", " + "#strengthFieldMod");
+
+                    document.querySelector('#wisdomFieldMod').value = num;
+                } );
+                                                                        
+                document.querySelector('#charismaField').addEventListener('change', function () {
+                    var num = document.querySelector('#charismaField').value;
+                
+                    num -= 10;
+
+                    num /= 2;
+
+                    num = Math.floor(num);
+
+                    //console.log(document.querySelector('#strengthField').value + ", " + num + ", " + "#strengthFieldMod");
+
+                    document.querySelector('#charismaFieldMod').value = num;
+                } );
             }
             
             window.onload = init;
@@ -256,40 +348,39 @@
                             </section>
                         </section>
 
-                        <!--
                         <section style="width: 70%; float: right;">
-                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                                <label for="acrobatics">Acrobatics: </label>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="strengthmod">Strength Mod: </label>
                                 <br>
-                                <input id="acrobaticsField" type="number" name="acrobatics" min="1" max="20" step="1" value="10"/>
+                                <input disabled="disabled" style="width: 40px; height: 40px;" id="strengthFieldMod" type="number" name="strengthmod" min="1" max="20" step="1" value="0"/>
                             </section>
-                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                                <label for="animhandl">Animal Handling</label>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="constitutionmod">Constitution Mod: </label>
                                 <br>
-                                <input id="animhandlField" type="number" name="animhandl" min="1" max="20" step="1" value="10"/>
+                                <input disabled="disabled" style="width: 40px; height: 40px;" id="constitutionFieldMod" type="number" name="constitutionmod" min="1" max="20" step="1" value="0"/>
                             </section>
-                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                                <label for="arcana">Arcana: </label>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="dexteritymod">Dexterity Mod: </label>
                                 <br>
-                                <input id="arcanaField" type="number" name="arcana" min="1" max="20" step="1" value="10"/>
+                                <input disabled="disabled" style="width: 40px; height: 40px;" id="dexterityFieldMod" type="number" name="dexteritymod" min="1" max="20" step="1" value="0"/>
                             </section>
-                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                                <label for="wisdom">Wisdom: </label>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="wisdommod">Wisdom Mod: </label>
                                 <br>
-                                <input id="wisdomField" type="number" name="wisdom" min="1" max="20" step="1" value="10"/>
+                                <input disabled="disabled" style="width: 40px; height: 40px;"   id="wisdomFieldMod" type="number" name="wisdommod" min="1" max="20" step="1" value="0"/>
                             </section>
-                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                                <label for="intelligence">Intelligence: </label>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="intelligencemod">Intelligence Mod: </label>
                                 <br>
-                                <input id="intelligenceField" type="number" name="intelligence" min="1" max="20" step="1" value="10"/>
+                                <input disabled="disabled" style="width: 40px; height: 40px;" id="intelligenceFieldMod" type="number" name="intelligencemod" min="1" max="20" step="1" value="0"/>
                             </section>
-                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                                <label for="charisma">Charisma: </label>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="charismamod">Charisma Mod: </label>
                                 <br>
-                                <input id="charismaField" type="number" name="charisma" min="1" max="20" step="1" value="10"/>
+                                <input disabled="disabled" style="width: 40px; height: 40px;" id="charismaFieldMod" type="number" name="charismamod" min="1" max="20" step="1" value="0"/>
                             </section>
                         </section>
-                        -->
+                        
                     </section>
 
                     <button style="position: absolute; bottom: 5%;" type="submit" class="submit" value="Save"> Save </button>
