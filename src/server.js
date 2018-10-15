@@ -35,6 +35,10 @@ const handlePost = (request, response, parsedUrl) => {
 // function to handle requests
 const handleGet = (request, response, parsedUrl) => {
     //console.log(parsedUrl);
+
+    //grab the query parameters (?key=value&key2=value2&etc=etc)
+    //and parse them into a reusable object by field name
+    const params = query.parse(parsedUrl.query);
     
     switch (parsedUrl.pathname) {
     case '/style.css':
@@ -48,13 +52,6 @@ const handleGet = (request, response, parsedUrl) => {
       htmlHandler.getIndex(request, response);
       break;
       case '/getCharacter':
-        //parse the url using the url module
-        //This will let us grab any section of the URL by name
-      const parsedUrl = url.parse(request.url);
-
-        //grab the query parameters (?key=value&key2=value2&etc=etc)
-        //and parse them into a reusable object by field name
-      const params = query.parse(parsedUrl.query);
       jsonHandler.getCharacter(request, response, params);
       break;
     default:
