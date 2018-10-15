@@ -1,5 +1,5 @@
 {
-    "name": "project-i-prototype ",
+    "name": "project-i-prototype",
     "version": "1.0.0",
     "description": "project prototype for project i, a dnd character maker",
     "main": "./src/server.js",

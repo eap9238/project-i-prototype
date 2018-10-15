@@ -88,6 +88,8 @@ const addCharacter = (request, response, body) => {
       return respondJSON(request, response, 400, responseJSON);
     }
   }
+    
+    //console.log(body.name);
 
   if (!characters[body.name]) {
     // console.dir('making account');
@@ -109,9 +111,21 @@ const addCharacter = (request, response, body) => {
     responseJSON.message = 'Created Successfully';
     return respondJSON(request, response, status, responseJSON);
   }
+    
   // console.dir('updating account');
   const status = 204;
-  characters[body.name].age = body.age;
+  characters[body.name] = {
+      name: body.name,
+      level: body.level,
+      class: body.class,
+      race: body.race,
+      strength: body.strength,
+      constitution: body.constitution,
+      dexterity: body.dexterity,
+      wisdom: body.wisdom,
+      intelligence: body.intelligence,
+      charisma: body.charisma,
+    };
 
   responseJSON.message = 'Updated Successfully';
 
