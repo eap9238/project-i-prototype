@@ -168,154 +168,156 @@
     </head>
     
     <body>
-        <section id="top">            
-            <h2>Dnd 5e</h2>
-            <h3>Character Sheet Calculator</h3>
-        </section>
-        <section id="sheet">
-            <form id="characterForm" action="/addCharacter" method="post">
-                <section style="width: 100%">
-                    <section style="display: inline-block">
-                        <label for="name">Name: </label>
-                        <br>
-                        <input id="nameField" type="text" name="name" value="Name"/>
-                    </section>
-                    <section style="display: inline-block">
-                        <label for="level">Level: </label>
-                        <br>
-                        <input id="levelField" type="number" name="level" min="1" max="20" step="1" value="1"/>
-                    </section>
-                    <section style="display: inline-block">
-                        <label for="class">Class: </label>
-                        <br>
-                        <select id="classField">
-                            <option value="barbarian">Barbarian</option>
-                            <option value="bard">Bard</option>
-                            <option value="cleric">Cleric</option>
-                            <option value="fighter">Fighter</option>
-                            <option value="druid">Druid</option>
-                            <option value="monk">Monk</option>
-                            <option value="ranger">Ranger</option>
-                            <option value="rogue">Rouge</option>
-                            <option value="sorcerer">Sorcerer</option>
-                            <option value="warlock">Warlock</option>
-                            <option value="wizard">Wizard</option>
-                        </select>
-                    </section>
-                    <section style="display: inline-block">
-                        <label for="class">Race: </label>
-                        <br>
-                        <select id="raceField">
-                            <option value="dragonborn">Dragonborn</option>
-                            <option value="dwarf">Dwarf</option>
-                            <option value="elf">Elf</option>
-                            <option value="gnome">Gnome</option>
-                            <option value="half-elf">Half-Elf</option>
-                            <option value="half-orc">Half-Orc</option>
-                            <option value="halfling">Halfling</option>
-                            <option value="human">Human</option>
-                            <option value="tiefling">Tiefling</option>
-                        </select>
-                    </section>
-                </section>
-                
-                <br><br>
-                
-                <section style="display: block">
-                    <section style="width: 30%; float: left;">
-                        <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
-                            <label for="strength">Strength: </label>
+        <div style="max-width: 910px; height: 100%; background-color: #FFFFFF; margin: auto;">
+            <section id="top">            
+                <h2>Dnd 5e</h2>
+                <h3>Character Sheet Calculator</h3>
+            </section>
+            <section id="sheet">
+                <form id="characterForm" action="/addCharacter" method="post">
+                    <section style="width: 100%">
+                        <section style="display: inline-block">
+                            <label for="name">Name: </label>
                             <br>
-                            <input style="width: 40px; height: 40px;" id="strengthField" type="number" name="strength" min="1" max="20" step="1" value="10"/>
+                            <input id="nameField" type="text" name="name" value="Name"/>
                         </section>
-                        <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
-                            <label for="constitution">Constitution: </label>
+                        <section style="display: inline-block">
+                            <label for="level">Level: </label>
                             <br>
-                            <input style="width: 40px; height: 40px;" id="constitutionField" type="number" name="constitution" min="1" max="20" step="1" value="10"/>
+                            <input id="levelField" type="number" name="level" min="1" max="20" step="1" value="1"/>
                         </section>
-                        <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
-                            <label for="dexterity">Dexterity: </label>
+                        <section style="display: inline-block">
+                            <label for="class">Class: </label>
                             <br>
-                            <input style="width: 40px; height: 40px;" id="dexterityField" type="number" name="dexterity" min="1" max="20" step="1" value="10"/>
+                            <select id="classField">
+                                <option value="barbarian">Barbarian</option>
+                                <option value="bard">Bard</option>
+                                <option value="cleric">Cleric</option>
+                                <option value="fighter">Fighter</option>
+                                <option value="druid">Druid</option>
+                                <option value="monk">Monk</option>
+                                <option value="ranger">Ranger</option>
+                                <option value="rogue">Rouge</option>
+                                <option value="sorcerer">Sorcerer</option>
+                                <option value="warlock">Warlock</option>
+                                <option value="wizard">Wizard</option>
+                            </select>
                         </section>
-                        <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
-                            <label for="wisdom">Wisdom: </label>
+                        <section style="display: inline-block">
+                            <label for="class">Race: </label>
                             <br>
-                            <input style="width: 40px; height: 40px;"   id="wisdomField" type="number" name="wisdom" min="1" max="20" step="1" value="10"/>
-                        </section>
-                        <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
-                            <label for="intelligence">Intelligence: </label>
-                            <br>
-                            <input style="width: 40px; height: 40px;" id="intelligenceField" type="number" name="intelligence" min="1" max="20" step="1" value="10"/>
-                        </section>
-                        <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
-                            <label for="charisma">Charisma: </label>
-                            <br>
-                            <input style="width: 40px; height: 40px;" id="charismaField" type="number" name="charisma" min="1" max="20" step="1" value="10"/>
+                            <select id="raceField">
+                                <option value="dragonborn">Dragonborn</option>
+                                <option value="dwarf">Dwarf</option>
+                                <option value="elf">Elf</option>
+                                <option value="gnome">Gnome</option>
+                                <option value="half-elf">Half-Elf</option>
+                                <option value="half-orc">Half-Orc</option>
+                                <option value="halfling">Halfling</option>
+                                <option value="human">Human</option>
+                                <option value="tiefling">Tiefling</option>
+                            </select>
                         </section>
                     </section>
 
-                    <!--
-                    <section style="width: 70%; float: right;">
-                        <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                            <label for="acrobatics">Acrobatics: </label>
-                            <br>
-                            <input id="acrobaticsField" type="number" name="acrobatics" min="1" max="20" step="1" value="10"/>
+                    <br><br>
+
+                    <section style="display: block">
+                        <section style="width: 30%; float: left;">
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="strength">Strength: </label>
+                                <br>
+                                <input style="width: 40px; height: 40px;" id="strengthField" type="number" name="strength" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="constitution">Constitution: </label>
+                                <br>
+                                <input style="width: 40px; height: 40px;" id="constitutionField" type="number" name="constitution" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="dexterity">Dexterity: </label>
+                                <br>
+                                <input style="width: 40px; height: 40px;" id="dexterityField" type="number" name="dexterity" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="wisdom">Wisdom: </label>
+                                <br>
+                                <input style="width: 40px; height: 40px;"   id="wisdomField" type="number" name="wisdom" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="intelligence">Intelligence: </label>
+                                <br>
+                                <input style="width: 40px; height: 40px;" id="intelligenceField" type="number" name="intelligence" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 2.5%; padding-bottom: 2.5%;">
+                                <label for="charisma">Charisma: </label>
+                                <br>
+                                <input style="width: 40px; height: 40px;" id="charismaField" type="number" name="charisma" min="1" max="20" step="1" value="10"/>
+                            </section>
                         </section>
-                        <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                            <label for="animhandl">Animal Handling</label>
-                            <br>
-                            <input id="animhandlField" type="number" name="animhandl" min="1" max="20" step="1" value="10"/>
+
+                        <!--
+                        <section style="width: 70%; float: right;">
+                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
+                                <label for="acrobatics">Acrobatics: </label>
+                                <br>
+                                <input id="acrobaticsField" type="number" name="acrobatics" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
+                                <label for="animhandl">Animal Handling</label>
+                                <br>
+                                <input id="animhandlField" type="number" name="animhandl" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
+                                <label for="arcana">Arcana: </label>
+                                <br>
+                                <input id="arcanaField" type="number" name="arcana" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
+                                <label for="wisdom">Wisdom: </label>
+                                <br>
+                                <input id="wisdomField" type="number" name="wisdom" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
+                                <label for="intelligence">Intelligence: </label>
+                                <br>
+                                <input id="intelligenceField" type="number" name="intelligence" min="1" max="20" step="1" value="10"/>
+                            </section>
+                            <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
+                                <label for="charisma">Charisma: </label>
+                                <br>
+                                <input id="charismaField" type="number" name="charisma" min="1" max="20" step="1" value="10"/>
+                            </section>
                         </section>
-                        <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                            <label for="arcana">Arcana: </label>
-                            <br>
-                            <input id="arcanaField" type="number" name="arcana" min="1" max="20" step="1" value="10"/>
-                        </section>
-                        <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                            <label for="wisdom">Wisdom: </label>
-                            <br>
-                            <input id="wisdomField" type="number" name="wisdom" min="1" max="20" step="1" value="10"/>
-                        </section>
-                        <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                            <label for="intelligence">Intelligence: </label>
-                            <br>
-                            <input id="intelligenceField" type="number" name="intelligence" min="1" max="20" step="1" value="10"/>
-                        </section>
-                        <section style="display: block; padding-top: 1.25%; padding-bottom: 1.25%;">
-                            <label for="charisma">Charisma: </label>
-                            <br>
-                            <input id="charismaField" type="number" name="charisma" min="1" max="20" step="1" value="10"/>
-                        </section>
+                        -->
                     </section>
+
+                    <button style="position: absolute; bottom: 5%;" type="submit" class="submit" value="Save"> Save </button>
+
+                </form>
+            </section>
+
+            <section id="sidebar">
+                <form id="toolForm" action="/getList" method="get" value=''>
+                    <!--
+                    <select id='urlField'>
+                        <option value='/getUsers'>/getUsers</option>
+                        <option value='/notReal'>/notReal</option>
+                    </select>
+
+                    <select id="methodSelect">
+                        <option value="get">GET</option>
+                        <option value="head">HEAD</option>
+                    </select>
                     -->
-                </section>
-                
-                <button style="position: absolute; bottom: 5%; left: 35%;" type="submit" class="submit" value="Save"> Save </button>
-                
-            </form>
-        </section>
-        
-        <section id="sidebar">
-            <form id="toolForm" action="/getList" method="get" value=''>
-                <!--
-                <select id='urlField'>
-                    <option value='/getUsers'>/getUsers</option>
-                    <option value='/notReal'>/notReal</option>
-                </select>
-                
-                <select id="methodSelect">
-                    <option value="get">GET</option>
-                    <option value="head">HEAD</option>
-                </select>
-                -->
-                <button type="submit" class="submit" value="Get List"> Get List </button>
-                <br>
-                <section id="characterSelect"></section>
-            </form>
-        </section>
-        
-        <section id="content">
-        </section>
+                    <button type="submit" class="submit" value="Get List"> Get List </button>
+                    <br>
+                    <section id="characterSelect"></section>
+                </form>
+            </section>
+
+            <section id="content">
+            </section>
+        </div>
     </body>
 </html>

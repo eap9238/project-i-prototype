@@ -3,6 +3,7 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: #E8E8E8;
 }
 
 button {
@@ -166,14 +167,15 @@ button {
 
 #sidebar {
     float: left;
-    width: 30%;
+    width: 20%;
     height: 90%;
     overflow-y: scroll;
+    padding-left: 20px;
 }
 
 #sheet {
     float: right;
-    width: 65%;
+    width: 75%;
     height: 90%;
 }
 
