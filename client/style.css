@@ -5,13 +5,201 @@ html, body {
   padding: 0;
 }
 
-#top {
-  text-align: center;
-  margin: 0 auto;
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
-#top h1 {
-  font-size: 2em;
+.submit {
+    color: #FFFFFF;
+    background-color: #555555;
+    border: 2px solid #EEEEEE;
+}
+
+.submit:hover {
+    color: #555555;
+    background-color: #FFFFFF;
+    border: 2px solid #555555;
+}
+
+.barbarian {
+    color: #FFFFFF;
+    background-color: #7B0828;
+    border: 2px solid #EEEEEE;
+}
+
+.barbarian:hover {
+    color: #7B0828;
+    background-color: #FFFFFF;
+    border: 2px solid #7B0828;
+}
+
+.bard {
+    color: #FFFFFF;
+    background-color: #541388;
+    border: 2px solid #EEEEEE;
+}
+
+.bard:hover {
+    color: #541388;
+    background-color: #FFFFFF;
+    border: 2px solid #541388;
+}
+
+.cleric {
+    color: #FFFFFF;
+    background-color: #2E86AB;
+    border: 2px solid #EEEEEE;
+}
+
+.cleric:hover {
+    color: #2E86AB;
+    background-color: #FFFFFF;
+    border: 2px solid #2E86AB;
+}
+
+.fighter {
+    color: #FFFFFF;
+    background-color: #FFD400;
+    border: 2px solid #EEEEEE;
+}
+
+.fighter:hover {
+    color: #FFD400;
+    background-color: #FFFFFF;
+    border: 2px solid #FFD400;
+}
+
+.druid {
+    color: #FFFFFF;
+    background-color: #157F1F ;
+    border: 2px solid #EEEEEE;
+}
+
+.druid:hover {
+    color: #157F1F;
+    background-color: #FFFFFF;
+    border: 2px solid #157F1F ;
+}
+
+.monk {
+    color: #FFFFFF;
+    background-color: #FC5130;
+    border: 2px solid #EEEEEE;
+}
+
+.monk:hover {
+    color: #FC5130;
+    background-color: #FFFFFF;
+    border: 2px solid #FC5130 ;
+}
+
+.ranger {
+    color: #FFFFFF;
+    background-color: #854D27;
+    border: 2px solid #EEEEEE;
+}
+
+.ranger:hover {
+    color: #854D27;
+    background-color: #FFFFFF;
+    border: 2px solid #854D27;
+}
+
+.rouge {
+    color: #FFFFFF;
+    background-color: #2E1F27 ;
+    border: 2px solid #EEEEEE;
+}
+
+.rouge:hover {
+    color: #2E1F27;
+    background-color: #FFFFFF;
+    border: 2px solid #2E1F27;
+}
+
+.sorcerer {
+    color: #FFFFFF;
+    background-color: #001F54;
+    border: 2px solid #EEEEEE;
+}
+
+.sorcerer:hover {
+    color: #001F54;
+    background-color: #FFFFFF;
+    border: 2px solid #001F54;
+}
+
+.warlock {
+    color: #FFFFFF;
+    background-color: #5B5F97;
+    border: 2px solid #EEEEEE;
+}
+
+.warlock:hover {
+    color: #5B5F97;
+    background-color: #FFFFFF;
+    border: 2px solid #5B5F97;
+}
+
+.wizard {
+    color: #FFFFFF;
+    background-color: #1E441E;
+    border: 2px solid #EEEEEE;
+}
+
+.wizard:hover {
+    color: #1E441E;
+    background-color: #FFFFFF;
+    border: 2px solid #1E441E;
+}
+
+#sidebar {
+    float: left;
+    width: 30%;
+    height: 90%;
+    overflow-y: scroll;
+}
+
+#sheet {
+    float: right;
+    width: 65%;
+    height: 90%;
+}
+
+#top {
+  height: 10%;
+  text-align: left;
+  margin: 0 auto;
+  font-family: 'Pacifico', cursive;
+}
+
+#content{
+    height: 30px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    display: none;
+}
+
+#top h2 {
+  font-size: 40px;
+    display: inline;
+}
+
+#top h3 {
+  font-size: 30px;
+    display: inline;
 }
 
 #content {

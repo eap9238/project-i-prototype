@@ -22,11 +22,27 @@ const notFound = (request, response) => {
 const getList = (request, response) => {
   let i = 0;
   const j = Object.keys(characters);
+    
+  /*
   const characterList = [];
 
   if (j.length > 0) {
     while (i < j.length) {
       characterList[i] = characters[j[i]].name;
+      i++;
+    }
+  }
+  */
+    
+  const characterList = {};
+
+  if (j.length > 0) {
+    while (i < j.length) {
+      characterList[characters[j[i]].name] = {
+          name: characters[j[i]].name,
+          class: characters[j[i]].class,
+      };
+        
       i++;
     }
   }
@@ -44,8 +60,8 @@ const getList = (request, response) => {
 // should calculate a 200
 const getCharacter = (request, response, param) => {    
     // json object to send
-    console.log(param.name);
-    console.log(characters[param.name]);
+    //console.log(param.name);
+    //console.log(characters[param.name]);
 
     const character = characters[param.name];
 

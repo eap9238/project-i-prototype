@@ -34,7 +34,7 @@ const handlePost = (request, response, parsedUrl) => {
 
 // function to handle requests
 const handleGet = (request, response, parsedUrl) => {
-    console.log(parsedUrl);
+    //console.log(parsedUrl);
     
     switch (parsedUrl.pathname) {
     case '/style.css':
